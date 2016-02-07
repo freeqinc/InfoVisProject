@@ -1,0 +1,25 @@
+{
+    "name": "infovis",
+    "version": "1.0.0",
+    "description": "Cogs220 Project",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js",
+        "watch": "nodemon index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/freeqinc/InfoVisProject.git"
+    },
+    "author": "Jesse Qin",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/freeqinc/InfoVisProject/issues"
+    },
+    "homepage": "https://github.com/freeqinc/InfoVisProject#readme",
+    "dependencies": {
+        "express": "^4.13.4",
+        "express-handlebars": "^3.0.0"
+    }
+}
