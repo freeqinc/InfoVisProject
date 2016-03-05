@@ -15,6 +15,9 @@ body {
   background: #fafafa;
   color: #282828;
 }
+/**
+ * GENERAL STYLING
+ */
 .material {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
@@ -22,16 +25,25 @@ body {
   box-sizing: border-box;
   padding: 15px;
 }
-.phase {
+.center-content {
   max-width: 900px;
   box-sizing: border-box;
   padding: 0 25px;
   margin: 0 auto;
+  position: relative;
 }
+/**
+ * THE NARRATIVE AT THE TOP
+ */
 .narrative-wrapper {
-  background: rgb(136, 186, 210);
+  position: fixed;
+  top: 0;
+  background: #b7f0ee;
   width: 100%;
+  color: rgb(32, 32, 32);
+  box-shadow: 0 1px 5px rgb(135, 135, 135);
   .narrative {
+    position: relative;
     padding: 30px 25px;
     line-height: 1.8em;
     font-size: 1.5em;
@@ -44,8 +56,8 @@ body {
       position: relative;
       height: 1.7em;
       text-align: center;
-      min-width: 70px;
-      border-bottom: 3px solid rgb(131, 72, 241);
+      min-width: 50px;
+      border-bottom: 3px solid rgb(27, 102, 231);
       .var-in,
       .var-out {
         white-space: nowrap;
@@ -58,7 +70,103 @@ body {
       }
     }
   }
+  /**
+   * FANCY ART IN THE BACKGROUND OF THE NARRATIVE AT THE TOP
+   */
+  .art-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    .water-1 {
+      position: absolute;
+      bottom: 0;
+      height: 20%;
+      width: 100%;
+      background: #089;
+    }
+    .water-2 {
+      position: absolute;
+      bottom: 13%;
+      height: 7%;
+      width: 100%;
+      background: #0aa;
+      box-shadow: 0 -10px 50px rgb(115, 115, 115);
+    }
+    .sky {
+      position: absolute;
+      top: 0;
+      height: 80%;
+      width: 100%;
+      @include background(linear-gradient(to top, #d4f4f3 0%, #b7f1ef 80%, #8ce6e1));
+      box-shadow: 0 0 10px rgb(140, 140, 140);
+      .center-content {
+        height: 100%;
+      }
+      .mountain {
+        position: absolute;
+        right: 45px;
+        bottom: 0;
+        width: 60px;
+        height: 35px;
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          border-top: 35px solid transparent;
+        }
+        &::before {
+          border-right: 25px solid rgb(190, 183, 166);
+        }
+        &::after {
+          left: 25px;
+          border-left: 25px solid rgb(223, 223, 214);
+        }
+      }
+      .mountain-2 {
+        right: 15px;
+        height: 30px;
+        &::before, &::after {
+          border-top-width: 30px;
+        }
+        &::before {
+          border-right-width: 25px;
+        }
+        &::after {
+          left: 25px;
+          border-left-width: 25px;
+        }
+      }
+      .mountain-3 {
+        right: 74px;
+        height: 26px;
+        &::before, &::after {
+          border-top-width: 26px;
+        }
+        &::before {
+          border-right-width: 23px;
+        }
+        &::after {
+          left: 23px;
+          border-left-width: 23px;
+        }
+      }
+      .sun {
+        width: 19px;
+        height: 19px;
+        border-radius: 100%;
+        position: absolute;
+        bottom: 43px;
+        right: 55px;
+        @include background(radial-gradient(rgb(219, 196, 71) 10%, rgb(231, 131, 27)));
+      }
+    }
+  }
 }
+/**
+ * PHASE 1
+ */
 .phase-1 {
   display: none;
   margin-top: 50px;
@@ -75,6 +183,9 @@ body {
     height: 400px;
   }
 }
+/**
+ * PHASE 2
+ */
 .phase-2 {
   margin-top: 50px;
   .input-people {
