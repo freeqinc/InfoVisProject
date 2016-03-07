@@ -1,4 +1,4 @@
-<div class="phase-1 phase">
+<!-- <div class="phase-1 phase">
   <div class="precip-graph material">
 
   </div>
@@ -6,7 +6,7 @@
 
   </div>
 
-</div>
+</div> -->
 <div class="narrative-wrapper">
   <div class="art-wrapper">
     <div class="water-1"></div>
@@ -22,7 +22,7 @@
   </div>
   <div class="narrative center-content">
     <span class="nar-const const-1">
-      Imagine if
+      If
     </span>
     <div class="nar-var var-1">
       <div class="var-in">
@@ -43,16 +43,64 @@
   </div>
 </div>
 <div class="under-narrative-content">
-  <div class="phase-2 center-content">
-    <div class="input-people">
-      <div class="input-people-choice material">
-        You
+  <div class="phase-1">
+    <div class="center-content">
+      <div class="input-people">
+        <div class="choice-wrapper">
+          <div class="input-people-choice material" data-narrative="I individually" data-num-people="1">
+            You
+          </div>
+        </div>
+        <div class="choice-wrapper">
+          <div class="input-people-choice material" data-narrative="my family" data-num-people="4">
+            Your Family
+          </div>
+        </div>
+        <div class="choice-wrapper">
+          <div class="input-people-choice material" data-narrative="my community" data-num-people="60">
+            Your Community
+          </div>
+        </div>
       </div>
-      <div class="input-people-choice material">
-        Your Family
-      </div>
-      <div class="input-people-choice material">
-        Your Community
+    </div>
+  </div>
+  <div class="phase-2">
+    <div class="center-content" style="height: 500px;">
+      <div class="choice-wrapper">
+        <div class="time-choice material">
+          <input type="range" class="week-range" name="time" min="1" max="4" step="1" list="week-list" value="0">
+          <datalist id="week-list">
+            <option>1<option>
+            <option>2<option>
+            <option>3<option>
+            <option>4<option>
+          </datalist>
+          <input type="range" class="month-range" name="time" min="1" max="12" step="1" list="month-list" value="0">
+          <datalist id="month-list">
+            <option>1<option>
+            <option>2<option>
+            <option>3<option>
+            <option>4<option>
+            <option>5<option>
+            <option>6<option>
+            <option>7<option>
+            <option>8<option>
+            <option>9<option>
+            <option>10<option>
+            <option>11<option>
+            <option>12<option>
+          </datalist>
+          <input type="range" class="year-range" name="time" min="1" max="6" step="1" list="year-list" value="0">
+          <datalist id="year-list">
+            <option>1<option>
+            <option>2<option>
+            <option>3<option>
+            <option>4<option>
+            <option>5<option>
+            <option>6<option>
+          </datalist>
+
+        </div>
       </div>
     </div>
   </div>

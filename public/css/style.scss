@@ -4,6 +4,11 @@
 @include font-face("robotocon", "../fonts/RobotoCondensed-Regular", $file-formats: ttf eot);
 @include font-face("robotoreg", "../fonts/Roboto-Regular", $file-formats: ttf eot);
 @include font-face("robotomed", "../fonts/Roboto-Medium", $file-formats: ttf eot);
+$select-color-1: rgb(27, 102, 231);
+$select-color-2: rgb(33, 171, 10);
+$select-color-3: rgb(238, 162, 46);
+
+$phase-padding: 50px 0px;
 html,
 body {
   margin: 0;
@@ -19,7 +24,7 @@ body {
  * GENERAL STYLING
  */
 .material {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   border-radius: 2px;
   background: #fff;
   box-sizing: border-box;
@@ -42,6 +47,7 @@ body {
   width: 100%;
   color: rgb(32, 32, 32);
   box-shadow: 0 1px 5px rgb(135, 135, 135);
+  z-index: 999999;
   .narrative {
     position: relative;
     padding: 30px 25px;
@@ -57,7 +63,13 @@ body {
       height: 1.7em;
       text-align: center;
       min-width: 50px;
-      border-bottom: 3px solid rgb(27, 102, 231);
+      border-bottom: 3px solid $select-color-1;
+      &.var-2 {
+        border-bottom-color: $select-color-2;
+      }
+      &.var-3 {
+        border-bottom-color: $select-color-3;
+      }
       .var-in,
       .var-out {
         white-space: nowrap;
@@ -110,7 +122,8 @@ body {
         bottom: 0;
         width: 60px;
         height: 35px;
-        &::before, &::after {
+        &::before,
+        &::after {
           content: '';
           position: absolute;
           top: 0;
@@ -127,7 +140,8 @@ body {
       .mountain-2 {
         right: 15px;
         height: 30px;
-        &::before, &::after {
+        &::before,
+        &::after {
           border-top-width: 30px;
         }
         &::before {
@@ -141,7 +155,8 @@ body {
       .mountain-3 {
         right: 74px;
         height: 26px;
-        &::before, &::after {
+        &::before,
+        &::after {
           border-top-width: 26px;
         }
         &::before {
@@ -165,9 +180,9 @@ body {
   }
 }
 /**
- * PHASE 1
+ * Temp??
  */
-.phase-1 {
+.phase-temp {
   display: none;
   margin-top: 50px;
   &>div {
@@ -184,17 +199,70 @@ body {
   }
 }
 /**
+ * PHASE 1
+ */
+.phase-1 {
+  background: rgb(222, 223, 183);
+  padding: $phase-padding;
+  .input-people {
+    width: 100%;
+    font-size: 0;
+    .choice-wrapper {
+      width: 33%;
+      height: 100%;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding: 0 20px;
+    }
+    .input-people-choice {
+      @include transition(all 100ms ease-out);
+      position: relative;
+      font-size: 24px;
+      text-align: center;
+      padding: 50px 0;
+      cursor: pointer;
+      &::after {
+        @include transition(all 100ms ease-out);
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: $select-color-1;
+      }
+    }
+    .input-people-choice-selected {
+      color: $select-color-1;
+      @include transform(scale(0.95));
+      &::after {
+        height: 6px;
+      }
+    }
+  }
+}
+/**
  * PHASE 2
  */
 .phase-2 {
-  margin-top: 50px;
-  .input-people {
-    width: 100%;
-    height: 200px;
-    .input-people-choice {
-      display: inline-block;
-      width: 33%;
-      height: 100%;
+  background: rgb(209, 245, 231);
+  padding: $phase-padding;
+  .choice-wrapper {
+    box-sizing: border-box;
+    padding: 0px 20px;
+    input[type="range"] {
+      width: 100%;
     }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .phase-1 .input-people .choice-wrapper {
+    display: block;
+    text-align: center;
+    padding: 30px 0;
+    margin: 0 auto;
+    width: 90%;
   }
 }
