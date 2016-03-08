@@ -1,12 +1,11 @@
 @import 'bourbon/bourbon';
 @import 'palette';
+@import 'range-input';
+@import 'variables';
 @include font-face("robotolight", "../fonts/Roboto-Light", $file-formats: ttf eot);
 @include font-face("robotocon", "../fonts/RobotoCondensed-Regular", $file-formats: ttf eot);
 @include font-face("robotoreg", "../fonts/Roboto-Regular", $file-formats: ttf eot);
 @include font-face("robotomed", "../fonts/Roboto-Medium", $file-formats: ttf eot);
-$select-color-1: rgb(27, 102, 231);
-$select-color-2: rgb(33, 171, 10);
-$select-color-3: rgb(238, 162, 46);
 
 $phase-padding: 50px 0px;
 html,
@@ -251,8 +250,40 @@ body {
   .choice-wrapper {
     box-sizing: border-box;
     padding: 0px 20px;
+    width: 100%;
     input[type="range"] {
       width: 100%;
+      margin-top: 40px;
+      margin-bottom: 30px;
+    }
+    .num-weeks {
+      font-size: 1.5em;
+      text-align: center;
+      width: 100%;
+      color: $select-color-2;
+      &.not-selected {
+        color: #000;
+      }
+    }
+    .time-choice {
+      @include transition(all 100ms ease-out);
+      position: relative;
+      &::after {
+        @include transition(all 100ms ease-out);
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0px;
+        background: $select-color-2;
+      }
+    }
+    .time-choice-selected {
+      // @include transform(scale(0.95));
+      &::after {
+        height: 6px;
+      }
     }
   }
 }
