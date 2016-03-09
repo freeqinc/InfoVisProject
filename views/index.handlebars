@@ -1,12 +1,3 @@
-<!-- <div class="phase-1 phase">
-  <div class="precip-graph material">
-
-  </div>
-  <div class="precip-map material">
-
-  </div>
-
-</div> -->
 <div class="narrative-wrapper">
   <div class="art-wrapper">
     <div class="water-1"></div>
@@ -81,12 +72,12 @@
     <div class="center-content">
       <div class="choice-wrapper">
         {{#each comparisons}}
-        <div class="comp-choice material" data-conversion={{conversion}} data-text1="{{text1}}" data-text2="{{text2}}">
-          <div class="title">
-            {{title}}
+          <div class="comp-choice material" data-conversion= {{conversion}} data-text1="{{text1}}" data-text2="{{text2}}">
+            <div class="title">
+              {{title}}
+            </div>
+            <div><img src="imgs/{{image}}" alt="{{title}}" /></div>
           </div>
-          <div><img src="imgs/{{image}}" alt="{{title}}" /></div>
-        </div>
         {{/each}}
       </div>
     </div>
