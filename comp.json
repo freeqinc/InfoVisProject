@@ -1,0 +1,46 @@
+{
+  "comparisons": [
+    {
+      "title": "Almonds",
+      "conversion": 1.1,
+      "image": "almonds.jpg",
+      "text1": "",
+      "text2": " almonds"
+    },
+    {
+      "title": "Family in Poverty",
+      "conversion": 5,
+      "image": "poverty.jpg",
+      "text1": "a poor family to sustain ",
+      "text2": " days"
+    },
+    {
+      "title": "Beans for a Cup of Coffee",
+      "conversion": 37,
+      "image": "coffee.jpg",
+      "text1": "beans grown for ",
+      "text2": " cups of coffee"
+    },
+    {
+      "title": "Minimum Survival",
+      "conversion": 1.98128,
+      "image": "survival.jpg",
+      "text1": "",
+      "text2": " days of minimum survival"
+    },
+    {
+      "title": "Beef",
+      "conversion": 1824,
+      "image": "beef.jpg",
+      "text1": "",
+      "text2": " pounds of beef"
+    },
+    {
+      "title": "Golf Courses",
+      "conversion": 2976.1875,
+      "image": "golf.jpg",
+      "text1": "",
+      "text2": " hours of one golf course's upkeep"
+    }
+  ]
+}

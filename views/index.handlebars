@@ -28,16 +28,16 @@
       <div class="var-in"></div>
     </div>
     <span class="nar-const const-2">
-      took one less shower a week for
+      took just <span class="tagline">one less shower a week</span> for
     </span>
     <div class="nar-var var-2">
       <div class="var-in"></div>
     </div>
     <span class="nar-const const-3">
-      . That would be like
+      , that would be enough water for
     </span>
     <div class="nar-var var-3">
-      26.7 days of water for a child in poverty.
+      <div class="var-in"></div>
     </div>
   </div>
 </div>
@@ -46,7 +46,7 @@
     <div class="center-content">
       <div class="input-people">
         <div class="choice-wrapper">
-          <div class="input-people-choice material" data-narrative="I individually" data-num-people="1">
+          <div class="input-people-choice material" data-narrative="I" data-num-people="1">
             You
           </div>
         </div>
@@ -67,41 +67,27 @@
     <div class="center-content">
       <div class="choice-wrapper">
         <div class="time-choice material">
-          <input class="time-range" type="range" name="time" value="1" min="1">
-          <div class="num-weeks not-selected">__ weeks</div>
-          <!-- <input type="range" class="week-range" name="time" min="1" max="4" step="1" list="week-list" value="0">
-          <datalist id="week-list">
-            <option>1<option>
-            <option>2<option>
-            <option>3<option>
-            <option>4<option>
-          </datalist>
-          <input type="range" class="month-range" name="time" min="1" max="12" step="1" list="month-list" value="0">
-          <datalist id="month-list">
-            <option>1<option>
-            <option>2<option>
-            <option>3<option>
-            <option>4<option>
-            <option>5<option>
-            <option>6<option>
-            <option>7<option>
-            <option>8<option>
-            <option>9<option>
-            <option>10<option>
-            <option>11<option>
-            <option>12<option>
-          </datalist>
-          <input type="range" class="year-range" name="time" min="1" max="6" step="1" list="year-list" value="0">
-          <datalist id="year-list">
-            <option>1<option>
-            <option>2<option>
-            <option>3<option>
-            <option>4<option>
-            <option>5<option>
-            <option>6<option>
-          </datalist> -->
-
+          <input class="time-range" type="range" name="time" value="-1" min="1">
+          <div class="range-indicator">
+            <span>1 week</span>
+            <span>1 year</span>
+          </div>
+          <div class="num-weeks not-selected">__ months &amp; __ weeks</div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="phase-3">
+    <div class="center-content">
+      <div class="choice-wrapper">
+        {{#each comparisons}}
+        <div class="comp-choice material" data-conversion={{conversion}} data-text1="{{text1}}" data-text2="{{text2}}">
+          <div class="title">
+            {{title}}
+          </div>
+          <div><img src="imgs/{{image}}" alt="{{title}}" /></div>
+        </div>
+        {{/each}}
       </div>
     </div>
   </div>

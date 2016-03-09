@@ -6,8 +6,7 @@
 @include font-face("robotocon", "../fonts/RobotoCondensed-Regular", $file-formats: ttf eot);
 @include font-face("robotoreg", "../fonts/Roboto-Regular", $file-formats: ttf eot);
 @include font-face("robotomed", "../fonts/Roboto-Medium", $file-formats: ttf eot);
-
-$phase-padding: 50px 0px;
+$phase-padding: 50px 0;
 html,
 body {
   margin: 0;
@@ -16,7 +15,8 @@ body {
   font-family: 'robotoreg', sans-serif;
 }
 body {
-  background: #fafafa;
+  // background: #fafafa;
+  background: rgb(222, 223, 183);
   color: #282828;
 }
 /**
@@ -50,8 +50,12 @@ body {
   .narrative {
     position: relative;
     padding: 30px 25px;
-    line-height: 1.8em;
+    line-height: 1.9em;
     font-size: 1.5em;
+    min-height: 200px;
+    .tagline {
+      color: rgb(238, 26, 103);
+    }
     div {
       display: inline-block;
       vertical-align: top;
@@ -59,7 +63,7 @@ body {
     .nar-var {
       overflow: hidden;
       position: relative;
-      height: 1.7em;
+      height: 1.8em;
       text-align: center;
       min-width: 50px;
       border-bottom: 3px solid $select-color-1;
@@ -72,7 +76,7 @@ body {
       .var-in,
       .var-out {
         white-space: nowrap;
-        padding: 0 10px;
+        padding: 0 5px;
         box-sizing: border-box;
         position: absolute;
         left: 0;
@@ -171,7 +175,7 @@ body {
         height: 19px;
         border-radius: 100%;
         position: absolute;
-        bottom: 43px;
+        bottom: 40px;
         right: 55px;
         @include background(radial-gradient(rgb(219, 196, 71) 10%, rgb(231, 131, 27)));
       }
@@ -249,14 +253,24 @@ body {
   padding: $phase-padding;
   .choice-wrapper {
     box-sizing: border-box;
-    padding: 0px 20px;
+    padding: 0 20px;
     width: 100%;
     input[type="range"] {
       width: 100%;
       margin-top: 40px;
       margin-bottom: 30px;
     }
+    .range-indicator {
+      color: rgb(140, 140, 140);
+      span:first-child {
+        float: left;
+      }
+      span:nth-child(2) {
+        float: right;
+      }
+    }
     .num-weeks {
+      margin-top: 45px;
       font-size: 1.5em;
       text-align: center;
       width: 100%;
@@ -275,19 +289,68 @@ body {
         top: 0;
         left: 0;
         width: 100%;
-        height: 0px;
+        height: 0;
         background: $select-color-2;
       }
     }
     .time-choice-selected {
-      // @include transform(scale(0.95));
       &::after {
         height: 6px;
       }
     }
   }
 }
-
+/**
+ * PHASE 3
+ */
+.phase-3 {
+  background: rgb(231, 242, 249);
+  padding: 30px 0;
+  // padding: $phase-padding;
+  .choice-wrapper {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .comp-choice {
+    @include transition(all 100ms ease-out);
+    flex-basis: 200px;
+    flex-grow: 1;
+    margin: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    img {
+      width: 100%;
+      border-radius: 1px;
+      box-shadow: 0px 1px 2px rgb(177, 177, 177);
+    }
+    .title {
+      text-align: center;
+      font-size: 1.3em;
+      margin: 5px 0px;
+    }
+    &::after {
+      @include transition(all 100ms ease-out);
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background: $select-color-3;
+    }
+  }
+  .comp-choice-selected {
+    color: $select-color-3;
+    @include transform(scale(0.95));
+    &::after {
+      height: 6px;
+    }
+  }
+}
 @media screen and (max-width: 850px) {
   .phase-1 .input-people .choice-wrapper {
     display: block;
