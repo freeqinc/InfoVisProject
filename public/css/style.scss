@@ -207,6 +207,9 @@ body {
 .phase-1 {
   background: rgb(222, 223, 183);
   padding: $phase-padding;
+  .wrapping-text {
+    color: $select-color-1;
+  }
   .input-people {
     width: 100%;
     font-size: 0;
@@ -251,6 +254,9 @@ body {
 .phase-2 {
   background: rgb(209, 245, 231);
   padding: $phase-padding;
+  .wrapping-text {
+    color: $select-color-2;
+  }
   .choice-wrapper {
     box-sizing: border-box;
     padding: 0 20px;
@@ -307,6 +313,9 @@ body {
   background: rgb(231, 242, 249);
   padding: 30px 0;
   // padding: $phase-padding;
+  .wrapping-text {
+    color: $select-color-3;
+  }
   .choice-wrapper {
     box-sizing: border-box;
     width: 100%;
@@ -350,6 +359,12 @@ body {
       height: 6px;
     }
   }
+}
+.wrapping-text {
+  width: 100%;
+  padding: 0px 20px;
+  padding-bottom: 20px;
+  font-size: 1.5em;
 }
 @media screen and (max-width: 850px) {
   .phase-1 .input-people .choice-wrapper {
