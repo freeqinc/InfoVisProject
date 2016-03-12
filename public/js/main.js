@@ -120,4 +120,13 @@ $(document).ready(function () {
   $('.theMap button').on('click', function () {
     location.href = '/one-less-shower';
   });
+
+  $('.facebook').on('click', function () {
+    var url = 'https://www.facebook.com/sharer/sharer.php?u=' + window.location.href;
+    var width = 595;
+    var height = 465;
+    var left = window.screenX + window.outerWidth / 2 - width / 2;
+    var top = window.screenY + window.outerHeight / 2 - height / 2;
+    window.open(url, 'facebookShareWindow', 'height=' + height + ',width=' + width + ',left=' + left + ',top=' + top);
+  });
 });

@@ -85,6 +85,29 @@ body {
         width: 100%;
       }
     }
+    .facebook-wrapper {
+      display: block;
+      margin-top: 15px;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      .facebook {
+        @extend #story-button;
+        display: block;
+        margin: auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        opacity: 1;
+        svg {
+          display: inline-block;
+          height: 20px;
+          position: relative;
+          top: 4px;
+          margin-left: 4px;
+        }
+      }
+    }
   }
   /**
    * FANCY ART IN THE BACKGROUND OF THE NARRATIVE AT THE TOP
