@@ -14,9 +14,6 @@ body {
   padding: 0;
   font-size: 16px;
   font-family: 'robotoreg', sans-serif;
-}
-body {
-  // background: #fafafa;
   background: rgb(222, 223, 183);
   color: #282828;
 }
@@ -37,10 +34,16 @@ body {
   margin: 0 auto;
   position: relative;
 }
+
+.introduction.one-less-shower {
+  background-color: #089;
+}
+
 /**
  * THE NARRATIVE AT THE TOP
  */
 .narrative-wrapper {
+  display: none;
   position: fixed;
   top: 0;
   background: #b7f0ee;
@@ -50,7 +53,7 @@ body {
   z-index: 999999;
   .narrative {
     position: relative;
-    padding: 30px 25px;
+    padding: 30px 25px 0 25px;
     line-height: 1.9em;
     font-size: 1.5em;
     min-height: 200px;
@@ -206,6 +209,9 @@ body {
     }
   }
 }
+.under-narrative-content {
+  display: none;
+}
 /**
  * Temp??
  */
@@ -358,12 +364,12 @@ body {
     img {
       width: 100%;
       border-radius: 1px;
-      box-shadow: 0px 1px 2px rgb(177, 177, 177);
+      box-shadow: 0 1px 2px rgb(177, 177, 177);
     }
     .title {
       text-align: center;
       font-size: 1.3em;
-      margin: 5px 0px;
+      margin: 5px 0;
     }
     &::after {
       @include transition(all 100ms ease-out);
@@ -386,8 +392,7 @@ body {
 }
 .wrapping-text {
   width: 100%;
-  padding: 0px 20px;
-  padding-bottom: 20px;
+  padding: 0 20px 20px;
   font-size: 1.5em;
 }
 @media screen and (max-width: 850px) {
