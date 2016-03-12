@@ -1,0 +1,65 @@
+[
+  {
+    "Name": "BARRETT (BRT)",
+    "ShortName": "BRT",
+    "Latitude": 32.678,
+    "Longitude": -116.669,
+    "Capacity": 34806
+  },
+  {
+    "Name": "EL CAPITAN DAM (ELC)",
+    "ShortName": "ELC",
+    "Latitude": 32.882,
+    "Longitude": -116.808,
+    "Capacity": 112807
+  },
+  {
+    "Name": "LAKE HODGES (HDG)",
+    "ShortName": "HDG",
+    "Latitude": 33.046,
+    "Longitude": -117.128,
+    "Capacity": 30633
+  },
+  {
+    "Name": "LOWER OTAY (LOT)",
+    "ShortName": "LOT",
+    "Latitude": 32.609,
+    "Longitude": -116.927,
+    "Capacity": 49849
+  },
+  {
+    "Name": "MIRAMAR (MMR)",
+    "ShortName": "MMR",
+    "Latitude": 32.9,
+    "Longitude": -117.1,
+    "Capacity": 6682
+  },
+  {
+    "Name": "SUTHERLAND RESERVOIR (STD)",
+    "ShortName": "STD",
+    "Latitude": 33.118,
+    "Longitude": -116.787,
+    "Capacity": 29508
+  },
+  {
+    "Name": "SAN VICENTE (SVT)",
+    "ShortName": "SVT",
+    "Latitude": 32.912,
+    "Longitude": -116.924,
+    "Capacity": 249358
+  },
+  {
+    "Name": "MURRAY RES (MRR)",
+    "ShortName": "MRR",
+    "Latitude": 32.782,
+    "Longitude": -117.047,
+    "Capacity": 4684
+  },
+  {
+    "Name": "MORENA DAM (MOR)",
+    "ShortName": "MOR",
+    "Latitude": 32.683,
+    "Longitude": -116.55,
+    "Capacity": 50694
+  }
+]
