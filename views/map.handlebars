@@ -1,149 +1,184 @@
-<section class="introduction">
-  <h1>The drought</h1>
+<section class="introduction map">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="693" height="160" xml:space="preserve">
+    <pattern id="water" width=".25" height="1.1" patternContentUnits="objectBoundingBox">
+      <path fill="#fff" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z" />
+    </pattern>
+    <g>
+      <text id="text" x="0" y="140" style="font-weight:bold;font-size: 68pt; font-family:helvetica">The Drought</text>
+    </g>
 
-  <p>Since 2009 we’ve had a drought here Califronia. A good indicator for
-  how bad the drought is, is the amount of water in our reservoirs.
-  Select your area and explore how the drought has affected your reservoirs.</p>
+    <mask id="text-mask">
+      <use x="0" y="0" xlink:href="#text" opacity="1" fill="#ffffff" />
+    </mask>
+    <g id="eff">
+      <use x="0" y="0" xlink:href="#text" fill="#089" />
+      <rect class="water-fill" mask="url(#text-mask)" fill="url(#water)" x="-300" y="100" width="1200" height="120" opacity="0.3">
+        <animate attributeType="xml" attributeName="x" from="-300" to="0" repeatCount="indefinite" dur="3s" />
+      </rect>
 
-  <button>San Diego &gt;</button>
+      <rect class="water-fill" mask="url(#text-mask)" fill="url(#water)" y="95" width="1600" height="120" opacity="0.3">
+        <animate attributeType="xml" attributeName="x" from="-400" to="0" repeatCount="indefinite" dur="4s" />
+      </rect>
+
+      <rect class="water-fill" mask="url(#text-mask)" fill="url(#water)" y="105" width="800" height="120" opacity="0.3">
+        <animate attributeType="xml" attributeName="x" from="-200" to="0" repeatCount="indefinite" dur="2.4s" />
+      </rect>
+
+      <rect class="water-fill" mask="url(#text-mask)" fill="url(#water)" y="105" width="2000" height="120" opacity="0.3">
+        <animate attributeType="xml" attributeName="x" from="-500" to="0" repeatCount="indefinite" dur="3.8s" />
+      </rect>
+    </g>
+
+    <use xlink:href="#eff" opacity="0.9" />
+  </svg>
+
+  <p>California has been in a drought for several years. The water levels available in our reservoirs clearly shows the severity of the drought. Select different areas to explore how the drought has affected the reservoirs around you!</p>
+
+  <button>San Diego <span>‣</span></button>
 </section>
 
 <section class="theMap">
-    <div class="content">
-        <div class="graphs">
-            <div class="reservoir"></div>
-            <div class="usage"></div>
-            <button>Can I do anything to help? &gt; <br />(Click here to see how!)</button>
-        </div>
-
-        <div id="map"></div>
+  <div class="content">
+    <div class="action">
+      <button>Can I do anything to help?
+        <br /> Click here to see how! <span>‣</span></button>
     </div>
+
+    <div class="graphs">
+      <div class="reservoir"></div>
+      <div class="usage"></div>
+    </div>
+
+    <div id="map"></div>
+  </div>
 </section>
 
 <script src="/js/metrics-graphics/metricsgraphics.min.js"></script>
 <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.3/mapbox-gl.js"></script>
 
 <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYndlZ2dlcnNlbiIsImEiOiJjaWwxNmNpdDgyamdndm9tM2ZlOGx2b29vIn0.MCpAADVwXg2B2vAFA_VneQ';
-    var map = new mapboxgl.Map({
-        container: 'map', // container id
-        style: 'mapbox://styles/bweggersen/cil5uvml100a29fm106d722en', //stylesheet location
-        center: [-117.4989916949848, 32.829058240939034], // starting position
-        zoom: 9 // starting zoom
+  mapboxgl.accessToken = 'pk.eyJ1IjoiYndlZ2dlcnNlbiIsImEiOiJjaWwxNmNpdDgyamdndm9tM2ZlOGx2b29vIn0.MCpAADVwXg2B2vAFA_VneQ';
+  var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/bweggersen/cil5uvml100a29fm106d722en', //stylesheet location
+    center: [-117.28200171452139, 32.78750578190619], // starting position
+    zoom: 9 // starting zoom
+  });
+
+  map.scrollZoom.disable();
+  map.addControl(new mapboxgl.Navigation());
+
+  var container = map.getCanvasContainer()
+  var svg = d3.select(container).append('svg')
+
+  // helper functions to setup projection for each datapoint
+  function project(d) {
+    return map.project(getLL(d));
+  }
+
+  function getLL(d) {
+    return new mapboxgl.LngLat(+d.Longitude, +d.Latitude)
+  }
+
+  // the highest value measured in any resorvoir
+  var maxFilled = 164056;
+
+  // the highest capacity in any resorvoir
+  var maxCapacity = 249358;
+
+  // maximum size of cirlce
+  var maxCircleSize = 40;
+
+  // make dots global so it can be accessed in two d3 instances
+  var dots = null;
+
+  // helper function to determine size of circle
+  function calcualteCircelSize(value) {
+    return maxCircleSize * value;
+  }
+
+  d3.json('/data/reservoir.json', function(err, data) {
+    dots = svg.selectAll('circle.dot')
+      .data(data)
+
+    // initially set up circles
+    dots.enter().append('circle').classed('dot', true)
+      .attr('r', 1)
+      .style({
+        fill: '#0aa',
+        'fill-opacity': 0.6,
+        stroke: '#089',
+        'stroke-width': 1
+      })
+      .transition().duration(1000)
+      .attr('r', function(d) {
+        return calcualteCircelSize(1);
+      });
+
+    // helper function to render position of circles during map movements.
+    function render() {
+      dots.attr({
+        cx: function(d) {
+          var x = project(d).x;
+          return x;
+        },
+        cy: function(d) {
+          var y = project(d).y;
+          return y;
+        },
+      });
+    }
+
+    // re-render our visualization whenever the view changes
+    map.on('viewreset', function() {
+      render();
+    });
+    map.on('move', function() {
+      render();
     });
 
-    map.scrollZoom.disable();
-    map.addControl(new mapboxgl.Navigation());
+    // render our initial visualization
+    render();
+  });
 
-    var container = map.getCanvasContainer()
-    var svg = d3.select(container).append('svg')
+  d3.json('/data/data.json', function(data) {
+    // convert date value in JSON to proper date format
+    data = MG.convert.date(data, 'Date');
 
-    // helper functions to setup projection for each datapoint
-    function project(d) {
-        return map.project(getLL(d));
-    }
-
-    function getLL(d) {
-        return new mapboxgl.LngLat(+d.Longitude, +d.Latitude)
-    }
-
-    // the highest value measured in any resorvoir
-    var maxFilled = 164056;
-
-    // the highest capacity in any resorvoir
-    var maxCapacity = 249358;
-
-    // maximum size of cirlce
-    var maxCircleSize = 40;
-
-    // make dots global so it can be accessed in two d3 instances
-    var dots = null;
-
-    // helper function to determine size of circle
-    function calcualteCircelSize(value) {
-        return maxCircleSize * value;
-    }
-
-    d3.json('/data/reservoir.json', function(err, data) {
-        dots = svg.selectAll('circle.dot')
-            .data(data)
-
-        // initially set up circles
-        dots.enter().append('circle').classed('dot', true)
-            .attr('r', 1)
-            .style({
-                fill: '#0082a3',
-                'fill-opacity': 0.6,
-                stroke: '#004d60',
-                'stroke-width': 1
-            })
-            .transition().duration(1000)
-            .attr('r', function(d) {
-                return calcualteCircelSize(1);
-            });
-
-        // helper function to render position of circles during map movements.
-        function render() {
-            dots.attr({
-                cx: function(d) {
-                    var x = project(d).x;
-                    return x;
-                },
-                cy: function(d) {
-                    var y = project(d).y;
-                    return y;
-                },
-            });
-        }
-
-        // re-render our visualization whenever the view changes
-        map.on('viewreset', function() {
-            render();
-        });
-        map.on('move', function() {
-            render();
-        });
-
-        // render our initial visualization
-        render();
-    });
-
-    d3.json('/data/data.json', function(data) {
-        // convert date value in JSON to proper date format
-        data = MG.convert.date(data, 'Date');
-
-        MG.data_graphic({
-            title: 'Reservoirs',
-            data: data,
-            linked: true,
-            width: 650,
-            height: 350,
-            target: '.reservoir',
-            x_accessor: 'Date',
-            y_accessor: 'TotalRes',
-            min_y: 150000,
-            area: false,
-            mouseover: function(timeline_data, i) {
-                dots.transition().duration(5)
-                    .attr({
-                        r: function(map_data) {
-                            return calcualteCircelSize(timeline_data[map_data.ShortName] / map_data.Capacity)
-                        },
-                    })
+    MG.data_graphic({
+      title: 'Reservoirs',
+      data: data,
+      linked: true,
+      width: 650,
+      height: 350,
+      left: 0,
+      target: '.reservoir',
+      x_accessor: 'Date',
+      y_accessor: 'TotalRes',
+      min_y: 150000,
+      area: false,
+      mouseover: function(timeline_data, i) {
+        dots.transition().duration(5)
+          .attr({
+            r: function(map_data) {
+              return calcualteCircelSize(timeline_data[map_data.ShortName] / map_data.Capacity)
             },
-        });
-
-        MG.data_graphic({
-            title: 'Usage',
-            data: data,
-            linked: true,
-            width: 650,
-            height: 350,
-            min_y: 20000,
-            target: '.usage',
-            x_accessor: 'Date',
-            y_accessor: 'WaterUsage',
-            area: false,
-        });
+          })
+      },
     });
+
+    MG.data_graphic({
+      title: 'Usage',
+      data: data,
+      linked: true,
+      left: 0,
+      width: 650,
+      height: 350,
+      min_y: 20000,
+      target: '.usage',
+      x_accessor: 'Date',
+      y_accessor: 'WaterUsage',
+      area: false,
+    });
+  });
 </script>

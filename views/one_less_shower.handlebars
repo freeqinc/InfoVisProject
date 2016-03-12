@@ -1,11 +1,42 @@
-<section class="introduction">
-  <h1>The drought</h1>
+<section class="introduction one-less-shower">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="693" height="160" xml:space="preserve">
+    <pattern id="water" width=".25" height="1.1" patternContentUnits="objectBoundingBox">
+      <path fill="#fff" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z" />
+    </pattern>
+    <g>
+      <text id="text" x="0" y="140" style="font-weight:bold;font-size: 68pt; font-family:helvetica">What can I do?</text>
+    </g>
+
+    <mask id="text-mask">
+      <use x="0" y="0" xlink:href="#text" opacity="1" fill="#ffffff" />
+    </mask>
+    <g id="eff">
+      <use x="0" y="0" xlink:href="#text" fill="#0aa" />
+      <rect class="water-fill" mask="url(#text-mask)" fill="url(#water)" x="-300" y="100" width="1200" height="120" opacity="0.3">
+        <animate attributeType="xml" attributeName="x" from="-300" to="0" repeatCount="indefinite" dur="3s" />
+      </rect>
+
+      <rect class="water-fill" mask="url(#text-mask)" fill="url(#water)" y="95" width="1600" height="120" opacity="0.3">
+        <animate attributeType="xml" attributeName="x" from="-400" to="0" repeatCount="indefinite" dur="4s" />
+      </rect>
+
+      <rect class="water-fill" mask="url(#text-mask)" fill="url(#water)" y="105" width="800" height="120" opacity="0.3">
+        <animate attributeType="xml" attributeName="x" from="-200" to="0" repeatCount="indefinite" dur="2.4s" />
+      </rect>
+
+      <rect class="water-fill" mask="url(#text-mask)" fill="url(#water)" y="105" width="2000" height="120" opacity="0.3">
+        <animate attributeType="xml" attributeName="x" from="-500" to="0" repeatCount="indefinite" dur="3.8s" />
+      </rect>
+    </g>
+
+    <use xlink:href="#eff" opacity="0.9" />
+  </svg>
 
   <p>San Diego uses a lot of water. How can I make a difference? <br />
-    Well, let’s see how big of an influence skipping one shower can be.</p>
+    Let’s see how big of an influence you can make by skipping just one shower a week.</p>
 
-  <button>If I took just one less shower a week for 1 month , that would be
-enough water to .... &gt;</button>
+  <button>If I took just one less shower a week for 1 month, <br/>
+    that would be enough water to .... <span>‣</span></button>
 </section>
 <div class="narrative-wrapper">
   <div class="art-wrapper">
