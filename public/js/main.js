@@ -112,3 +112,12 @@ $(document).ready(function () {
     updateComparison();
   });
 });
+
+$(document).ready(function () {
+  $('.introduction button').on('click', function () {
+    $(this).parent().fadeOut();
+  });
+  $('.theMap button').on('click', function () {
+    location.href = '/one-less-shower';
+  });
+});

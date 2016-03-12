@@ -2,6 +2,7 @@
 @import 'palette';
 @import 'range-input';
 @import 'variables';
+@import 'map';
 @include font-face("robotolight", "../fonts/Roboto-Light", $file-formats: ttf eot);
 @include font-face("robotocon", "../fonts/RobotoCondensed-Regular", $file-formats: ttf eot);
 @include font-face("robotoreg", "../fonts/Roboto-Regular", $file-formats: ttf eot);

@@ -26,5 +26,6 @@ app.use('/js', express.static(path.join(__dirname, 'public/js')));
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', index.index);
+app.get('/', index.map);
+app.get('/one-less-shower', index.one_less_shower);
 app.listen(process.env.PORT || 3000);
