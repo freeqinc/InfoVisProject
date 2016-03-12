@@ -55,7 +55,7 @@ var adjustHeader;
 $(window).load(function () {
   // Handle variable height fixed header padding
   function adjustVariableHeader () {
-    $('.narrative').css('padding-bottom', $('.narrative').outerHeight(true) * 0.33);
+    $('.narrative').css('padding-bottom', $('.narrative').outerHeight(true) * 0.25);
     $('.under-narrative-content').css('padding-top', $('.narrative').outerHeight(true));
   }
   adjustHeader = adjustVariableHeader;
@@ -83,6 +83,7 @@ $(document).ready(function () {
     state.log();
     updateComparison();
   });
+
   $('.time-range').on('input', function () {
     $('.num-weeks').removeClass('not-selected');
     var numWeeks = Math.ceil($(this).val() * 0.52);
@@ -92,6 +93,7 @@ $(document).ready(function () {
     state.textDuration = textIn;
     state.log();
   });
+
   $('.time-range').change(function () {
     $('.time-choice').addClass('time-choice-selected');
     swapText($('.var-2'), 'var-in', state.textDuration, adjustHeader);
@@ -114,8 +116,19 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  $('.introduction button').on('click', function () {
-    $(this).parent().fadeOut();
+  $('.introduction.map button').on('click', function () {
+    $(this).parent().fadeToggle();
+  });
+  $('.introduction.one-less-shower button').on('click', function () {
+    $(this).parent().parent().children().fadeToggle();
+    adjustHeader();
+
+    $('.input-people-choice').first().trigger('click');
+    $('.time-range').val(9);
+    $('.time-range').trigger('input');
+    $('.time-range').trigger('change');
+    $('.time-range').trigger('click');
+
   });
   $('.theMap button').on('click', function () {
     location.href = '/one-less-shower';
